@@ -1,5 +1,20 @@
 #!/bin/bash
 
+if [ -z "$GH_USER" ]; then
+    echo "Error: GH_USER is not set." > /dev/stderr
+    exit 1
+fi
+
+if [ -z "$GH_EMAIL" ]; then
+    echo "Error: GH_EMAIL is not set." > /dev/stderr
+    exit 1
+fi
+
+if [ -z "$GH_PAT" ]; then
+    echo "Error: GH_PAT is not set." > /dev/stderr
+    exit 1
+fi
+
 set -eu
 
 ORIGINAL_REPO_SUBMODULE_PATH=external/junk
@@ -47,8 +62,11 @@ if ! cargo test; then
     exit 1
 fi
 
+git config user.name "$GH_USER"
+git config user.email "$GH_EMAIL"
+
 git commit -m "Update the original junk library to latest version"
-git push
+git push "https://$GH_PAT@github.com/amachang/junk_file.git" main
 cargo publish
 
 exit 0
