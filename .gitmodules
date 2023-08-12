@@ -1,0 +1,3 @@
+[submodule "external/junk"]
+	path = external/junk
+	url = https://github.com/sindresorhus/junk.git
