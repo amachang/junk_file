@@ -22,9 +22,9 @@ jobs:
         id: needs-update
         run: |
           if ./scripts/needs_update.sh; then
-            echo "::set-output name=should_continue::true"
+            echo "should_continue=true" > $GITHUB_OUTPUT
           else
-            echo "::set-output name=should_continue::false"
+            echo "should_continue=false" > $GITHUB_OUTPUT
           fi
 
       - name: Update and publish
