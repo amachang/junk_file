@@ -5,6 +5,11 @@ if [ -z "$GH_USER" ]; then
     exit 1
 fi
 
+if [ -z "$GH_NAME" ]; then
+    echo "Error: GH_NAME is not set." > /dev/stderr
+    exit 1
+fi
+
 if [ -z "$GH_EMAIL" ]; then
     echo "Error: GH_EMAIL is not set." > /dev/stderr
     exit 1
@@ -62,11 +67,11 @@ if ! cargo test; then
     exit 1
 fi
 
-git config user.name "$GH_USER"
+git config user.name "$GH_NAME"
 git config user.email "$GH_EMAIL"
 
 git commit -m "Update the original junk library to latest version"
-git push "https://$GH_PAT@github.com/amachang/junk_file.git" main
+git push "https://$GH_USER:$GH_PAT@github.com/amachang/junk_file.git" main
 cargo publish
 
 exit 0

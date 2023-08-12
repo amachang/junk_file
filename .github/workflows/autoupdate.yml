@@ -33,6 +33,7 @@ jobs:
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
-          GH_USER: Hitoshi Amano
+          GH_USER: amachang
+          GH_NAME: Hitoshi Amano
           GH_EMAIL: seijro@gmail.com
 
