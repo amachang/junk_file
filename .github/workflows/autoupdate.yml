@@ -1,0 +1,34 @@
+name: Autoupdate
+
+on:
+  schedule:
+    - cron: '0 9 * * MON'
+
+jobs:
+  autoupdate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install rust
+        run: rustup update stable
+
+      - name: Check if need update
+        id: needs-update
+        run: |
+          if ./scripts/needs_update.sh; then
+            echo "::set-output name=should_continue::true"
+          else
+            echo "::set-output name=should_continue::false"
+          fi
+
+      - name: Update and publish
+        if: ${{ steps.needs-update.outputs.should_continue == 'true' }}
+        run: ./scripts/update.sh
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
