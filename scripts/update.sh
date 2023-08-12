@@ -24,6 +24,7 @@ if ! git diff --exit-code; then
     exit 1
 fi
 
+# increment version in Cargo.toml
 perl -i -pe 's/^(version\s*=\s*"\d+\.\d+\.)(\d+)"/$1 . ($2 + 1) . "\""/ge' Cargo.toml
 
 if git diff --exit-code; then
