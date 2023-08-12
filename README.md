@@ -1,5 +1,8 @@
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/amachang/junk_file/test.yml?label=test)](https://github.com/amachang/junk_file/actions/workflows/test.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/amachang/junk_file)](https://app.codecov.io/gh/amachang/junk_file)
+[![docs.rs](https://img.shields.io/docsrs/junk_file)](https://docs.rs/junk_file/latest/junk_file/)
+[![Crates.io](https://img.shields.io/crates/l/junk_file)](https://crates.io/crates/junk_file)
+[![Crates.io](https://img.shields.io/crates/d/junk_file)](https://crates.io/crates/junk_file)
 
 # junk\_file: Detect Common Junk Files
 
