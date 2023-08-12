@@ -1,6 +1,6 @@
 [package]
 name = "junk_file"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "The library helps you detect commonly generated junk files like `.DS_Store` or `Thumbs.db`."
 license = "MIT OR Apache-2.0"
